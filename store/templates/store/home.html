@@ -26,7 +26,7 @@
       <h3>Category</h3>
       {%for cat in category%}
         <ul>
-          <li>{{cat}}~</li>
+          <a href="/?category={{cat.id}}"><li>{{cat}}~</li></a>
         </ul>
       {%endfor%}
     </div>
