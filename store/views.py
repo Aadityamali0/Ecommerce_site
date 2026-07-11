@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Product, Category
-
+from .models import Product, Category, Customer
+from django.contrib import messages
 def home(request):
     categories = Category.objects.all()
 
@@ -23,5 +23,23 @@ def signup(request):
     if request.method == 'GET':
         return render(request, 'store/signup.html')
     else:
-        return HttpResponse('post invoked')
-    # return render(request, 'store/signup.html')
+        postData = request.POST
+        name = postData.get('name')
+        phone = postData.get('phone')
+        # print(name, email)
+        customer = Customer(name=name,
+                            phone=phone)
+        error_message = None
+        if not name:
+            error_message = "Name is required"
+        elif not phone:
+            error_message = "phone is required"
+        elif len(phone)<10:
+            error_message = "phone number must have 10 numbers"
+        
+        if not error_message:
+            messages.success(request, 'signup successful')
+            customer.register()
+            return HttpResponse("Signup Successfull")
+        else:
+            return render(request, 'store/signup.html', {'error': error_message})

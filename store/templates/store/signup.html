@@ -5,27 +5,38 @@
     <div class="row my-3">
         <div class="col-sm-6 ofset-sm-3">
             <h3>SignUp</h3>
-            <form action="{% url 'signup' %}" method="POST"> {% csrf_token %}
+            <form action="{% url 'signup' %}" method="POST"> 
+                {%if messages%}
+                {%for message in messages%}
+                <p {%if messages.tags%} class="alert alert-{{message.tags}} mb-5" {%endif%}>{{messages }}</p>
+                {%endfor%}
+
+                {% csrf_token %}
+
+                {%if error%}
+                
+
+                {%endif%}
                 <div class="mb-3">
                     <label for="exampleInputName1" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="exampleInputName1">
+                    <input type="text" class="form-control" name="name" id="exampleInputName1" >
                 </div>
-                <div class="mb-3">
+                {% comment %} <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
+                    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div> {% endcomment %}
+                {% comment %} <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
                     <input type="password" class="form-control" id="exampleInputPassword1">
-                </div>
+                </div> {% endcomment %}
                 <div class="mb-3">
                     <label for="exampleInputPhone1" class="form-label">Phone Number</label>
-                    <input type="text" class="form-control" id="exampleInputPhone1">
+                    <input type="text" class="form-control" name="phone" id="exampleInputPhone1" >
                 </div>
-                <div class="mb-3 form-check">
+                {% comment %} <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
+                </div> {% endcomment %}
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
