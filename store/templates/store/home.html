@@ -1,26 +1,33 @@
 {%extends 'store/nav.html'%}
+{%block css%}
+.card-img-top{
+  height: 250px;
+  padding:5px;
+  object-fit: cover;
+}
+{%endblock%}
 {%block title%}Home Page {%endblock%}
 {%block body%}
 <div class="container-fluid mt-3">
   <div class="row">
     <div class="col-lg-9">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-    {%for i in product%}
-    <div class="col">
-    <div class="card h-100" style="width: 18rem">
-      <img
-      src="{{i.image.url}}"
-        class="card-img-top"
-        alt="..."/>
-      <div class="card-body d-flex flex-column">
-        <h5 class="card-title">{{i.product_name}}</h5>
-        <p class="card-text">{{i.description}}</p>
-        <a href="#" class="btn btn-primary mt-auto">Go somewhere</a>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        {%for i in product%}
+        <div class="col">
+          <div class="card h-100" style="width: 18rem">
+            <img
+            src="{{i.image.url}}"
+            class="card-img-top"
+            alt="..."/>
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">{{i.product_name}}</h5>
+              <p class="card-text">Rs. {{i.price}}</p>
+              <a href="/product_details" class="btn btn-primary mt-auto">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+        {%endfor%}
       </div>
-    </div>
-    </div>
-    {%endfor%}
-  </div>
     </div>
     <div class="col-lg-3">
       <h3>Category</h3>
