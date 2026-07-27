@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from .models import Product, Category, Customer
-from django.contrib import messages
+from .models import Product, Category
+
 def home(request):
     categories = Category.objects.all()
 
@@ -44,5 +44,10 @@ def home(request):
 #         else:
 #             return render(request, 'store/signup.html', {'error': error_message})
 
-def product_details(request):
-    return render(request, 'store/product_details.html')
+def product_details(request, slug, id):
+    # product = Product.objects.get(id=id)
+    product = get_object_or_404(Product, id=id)
+    params = {
+        'product' : product
+    }
+    return render(request, 'store/productDetailsPage.html', params)

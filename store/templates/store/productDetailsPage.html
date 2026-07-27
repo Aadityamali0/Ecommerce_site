@@ -1,0 +1,55 @@
+{%extends 'store/nav.html'%}
+{%load static%}
+{%block csslink%}
+<link rel="stylesheet" href="{%static 'store/productDetailsPage.css'%}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<style>
+  body{
+    background-color: wheat;
+  }
+</style>
+{%endblock%}
+{%block body%}
+    <section class="container sproduct px-3 py-5">
+        <div class="row g-4">
+            <div class="col-lg-5 col-md-12 col-12">
+                <img class="img-fluid main-img w-100 pb-1" src="{{product.image.url}}" alt="">
+                <!-- small photos at the bottom of the product -->
+                {% comment %} <div class="small-img-group">
+                  <div class="small-img-col">
+                    <img src="../swiper/images.jpeg" width="100%" class="small-img" alt="">
+                  </div>
+                  <div class="small-img-col">
+                    <img src="../swiper/black.jpeg" width="100%" class="small-img" alt="">
+                  </div>
+                  <div class="small-img-col">
+                    <img src="../swiper/images.jpeg" width="100%" class="small-img" alt="">
+                  </div>
+                  <div class="small-img-col">
+                    <img src="../swiper/images.jpeg" width="100%" class="small-img" alt="">
+                  </div>
+                </div> {% endcomment %}
+              </div>
+              <div class="col-lg-6 col-md-12 col-12">
+                <h6><a href="/" style="color : black;">Home</a> / {{product.product_name}}</h6>
+                <h3 class="py-4">{{product.product_name}}</h3>
+                <h2>Rs. {{product.price}}</h2>
+                <select class="my-3">
+                  <option>Select Size</option>
+                  <option>XL</option>
+                  <option>L</option>
+                  <option>S</option>
+                </select>
+                <div class="quantity-cart">
+                  <input type="number" value="1">
+                  <button class="buy-btn">Add To Cart</button>
+                </div>
+                <h4 class="mt-5 mb-5">Product Details: </h4>
+                <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati alias distinctio consectetur possimus, culpa adipisci ex iste voluptates magnam, eligendi esse quasi ipsa omnis modi deleniti accusantium aperiam sapiente corrupti.</span>
+              </div>
+        </div>  
+    </section>
+{%endblock%}
+{%block js%}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+{%endblock%}
