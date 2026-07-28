@@ -15,20 +15,13 @@
             <div class="col-lg-5 col-md-12 col-12">
                 <img class="img-fluid main-img w-100 pb-1" src="{{product.image.url}}" alt="">
                 <!-- small photos at the bottom of the product -->
-                {% comment %} <div class="small-img-group">
+                <div class="small-img-group">
+                  {%for sub in subimages%}
                   <div class="small-img-col">
-                    <img src="../swiper/images.jpeg" width="100%" class="small-img" alt="">
+                    <img src="{{sub.image.url}}" width="100%" id="small-img" alt="">
                   </div>
-                  <div class="small-img-col">
-                    <img src="../swiper/black.jpeg" width="100%" class="small-img" alt="">
-                  </div>
-                  <div class="small-img-col">
-                    <img src="../swiper/images.jpeg" width="100%" class="small-img" alt="">
-                  </div>
-                  <div class="small-img-col">
-                    <img src="../swiper/images.jpeg" width="100%" class="small-img" alt="">
-                  </div>
-                </div> {% endcomment %}
+                  {%endfor%}
+                </div>
               </div>
               <div class="col-lg-6 col-md-12 col-12">
                 <h6><a href="/" style="color : black;">Home</a> / {{product.product_name}}</h6>

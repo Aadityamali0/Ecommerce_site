@@ -16,12 +16,16 @@ class Product(models.Model):
     def __str__(self):
         return self.product_name
 
-class Customer(models.Model):
-    name = models.CharField(max_length=50)
-    phone = models.CharField(max_length=15)
+class SubImages(models.Model):
+    product = models.ForeignKey(Product, on_delete = models.CASCADE, related_name='sub_images')
+    image = models.ImageField(upload_to='image')
     
-    def register(self):
-        self.save()
+# class Customer(models.Model):
+#     name = models.CharField(max_length=50)
+#     phone = models.CharField(max_length=15)
+    
+#     def register(self):
+#         self.save()
         
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name

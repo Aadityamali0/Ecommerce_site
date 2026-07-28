@@ -48,6 +48,7 @@ def product_details(request, slug, id):
     # product = Product.objects.get(id=id)
     product = get_object_or_404(Product, id=id)
     params = {
-        'product' : product
+        'product' : product,
+        'subimages': product.sub_images.all()
     }
     return render(request, 'store/productDetailsPage.html', params)

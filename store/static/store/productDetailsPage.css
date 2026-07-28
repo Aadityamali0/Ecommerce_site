@@ -36,11 +36,10 @@
 .small-img-col{
     flex: 1;
     cursor: pointer;
-}
-
-.small-img{
-    width: 100%;
-    border-radius: 5px;
+    /* width: 100%; */
+    border: solid 1px;
+    /* box-shadow: 1px 1px 5px; */
+    /* border-radius: 5px; */
 }
 
 /* Product Info */
