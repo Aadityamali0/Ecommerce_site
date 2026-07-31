@@ -21,6 +21,7 @@
 .sproduct .main-img{
     width: 100%;
     border-radius: 8px;
+    /* background: #f0f3f4; */
     object-fit: cover;
     border: solid 1px;
 }

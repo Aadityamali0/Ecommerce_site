@@ -1,6 +1,5 @@
 const mainImg = document.getElementById("MainImage");
 const thumbnails = document.querySelectorAll(".small-img");
-
 thumbnails.forEach(img => {
     img.addEventListener("click", function () {
 
@@ -13,4 +12,12 @@ thumbnails.forEach(img => {
         // Put the old main image into the clicked thumbnail
         this.src = currentMain;
     });
+});
+
+const quantity = document.querySelector('.quantity-cart input');
+
+quantity.addEventListener("change", function(){
+    if(this.value <1 || this.value === ""){
+        this.value = 1;
+    }
 });
