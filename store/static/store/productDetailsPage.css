@@ -49,6 +49,7 @@
 }
 
 .sproduct h2{
+    /* color: rgb(255,94,94); */
     color: #e63946;
     font-weight: bold;
 }
@@ -85,10 +86,13 @@
 }
 
 /* Tablet */
-@media (max-width: 991px){
-
+@media (max-width: 768px){
+    .container{
+        padding: 0;
+    }
     .sproduct{
-        margin-top: 20px;
+        margin-top: 15px;
+        margin-bottom: 0;
     }
 
     .sproduct .col-lg-6{
@@ -107,9 +111,8 @@
         box-shadow : none;
     }
     .sproduct{
-        padding: 15px;
+        margin: 0;
     }
-
     .sproduct h6{
         font-size: 14px;
     }

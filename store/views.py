@@ -47,8 +47,15 @@ def home(request):
 def product_details(request, slug, id):
     # product = Product.objects.get(id=id)
     product = get_object_or_404(Product, id=id)
+    
+    related_products = Product.objects.filter(
+        category = product.category
+    ).exclude(id=product.id).order_by('?')[:10]
+    
     params = {
         'product' : product,
-        'subimages': product.sub_images.all()
+        'subimages': product.sub_images.all(),
+        'relatedProducts' : related_products
     }
+    
     return render(request, 'store/productDetailsPage.html', params)
