@@ -1,43 +1,40 @@
 {%extends 'store/nav.html'%}
+{%load static%}
 {%block csslink%}
-<style>
-.card-img-top{
-  height: 250px;
-  padding:5px;
-  object-fit: cover;
-}
-</style>
+<link rel="stylesheet" href="{%static 'store/home.css'%}">
 {%endblock%}
 {%block title%}Home Page {%endblock%}
 {%block body%}
+<div class="category">
+  {% comment %} <h3>Category</h3> {% endcomment %}
+  <ul class="category-list">
+    {%for cat in category%}
+      <li>
+        <a href="/?category={{cat.id}}" class="category-link">{{cat}}~</a>
+      </li>
+    {%endfor%}
+  </ul>
+</div>
 <div class="container-fluid mt-3">
   <div class="row">
-    <div class="col-lg-9">
-      <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col-lg-12 mt-4">
+      <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4" id="product-container">
         {%for i in product%}
         <div class="col">
-          <div class="card h-100" style="width: 18rem">
+          <div class="card h-100 w-100">
             <img
             src="{{i.image.url}}"
             class="card-img-top"
-            alt="..."/>
-            <div class="card-body d-flex flex-column">
+            alt="{{i.product_name}}"/>
+            <div class="card-body d-flex flex-column text-center">
               <h5 class="card-title">{{i.product_name}}</h5>
               <p class="card-text">Rs. {{i.price}}</p>
-              <a href="{%url 'product_details' i.product_name|slugify i.id %}" class="btn btn-primary mt-auto">Go somewhere</a>
+              <a href="{%url 'product_details' i.product_name|slugify i.id %}" class="btn btn-primary mt-auto">View</a>
             </div>
           </div>
         </div>
         {%endfor%}
       </div>
-    </div>
-    <div class="col-lg-3">
-      <h3>Category</h3>
-      {%for cat in category%}
-        <ul>
-          <a href="/?category={{cat.id}}"><li>{{cat}}~</li></a>
-        </ul>
-      {%endfor%}
     </div>
   </div>
 </div>
