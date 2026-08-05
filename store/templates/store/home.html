@@ -2,19 +2,26 @@
 {%load static%}
 {%block csslink%}
 <link rel="stylesheet" href="{%static 'store/home.css'%}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 {%endblock%}
 {%block title%}Home Page {%endblock%}
 {%block body%}
-<div class="category">
-  {% comment %} <h3>Category</h3> {% endcomment %}
-  <ul class="category-list">
-    {%for cat in category%}
-      <li>
-        <a href="/?category={{cat.id}}" class="category-link">{{cat}}~</a>
-      </li>
-    {%endfor%}
-  </ul>
+<div class="category swiper">
+    <div class="swiper-wrapper">
+
+        {% for cat in category %}
+        <div class="swiper-slide">
+
+            <a href="/?category={{cat.id}}"
+               class="category-link {% if request.GET.category == cat.id|stringformat:'s' %}active{% endif %}">
+                {{cat}}
+            </a>
+
+        </div>
+        {% endfor %}
+    </div>
 </div>
+
 <div class="container-fluid mt-3">
   <div class="row">
     <div class="col-lg-12 mt-4">
@@ -38,4 +45,8 @@
     </div>
   </div>
 </div>
+{%endblock%}
+{%block js%}
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src={%static 'store/home.js'%}></script>
 {%endblock%}
